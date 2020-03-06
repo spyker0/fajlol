@@ -1,0 +1,180 @@
+﻿@model TCC.Models.EstatisticasJogadorViewModel
+
+@{
+    ViewData["Title"] = "Estatísticas do jogador";
+}
+
+@if (Model == null)
+{
+    <section class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alerta-jogador-desatualizado">
+                    <strong>Atenção!</strong> Não foi possível encontrar as estatísticas para este jogador!
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+else
+{
+
+
+    <section class="container">
+        @if (Model.EstatisticasJogador.Desatualizado)
+        {
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger alerta-jogador-desatualizado">
+                        <strong>Atenção!</strong> Não foi possível contatar a API da riot games
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <section class="container-fluid dados-principais-jogador">
+        <div class="row">
+            <div class="col-12 col-sm-2">
+                <img src="@Model.LinkIcone" class="img-fluid foto">
+            </div>
+            <div class="col-12 col-sm nome-jogador titulo-jogador">
+                <h4>
+                    @(ViewContext.RouteData.Values["jogador"]) - @Model.EstatisticasJogador.Regiao
+                </h4>
+                @if (Model != null)
+                {
+                    <p class="divisao-jogador">@Model.EstatisticasJogador.Elo</p>
+                    <p>
+                        Taxa de vitória: @Model.EstatisticasJogador.TaxaVitoria.ToString("P2")
+                    </p>
+                }
+            </div>
+            @if (Model?.EstatisticasJogador != null)
+            {
+
+                <div class="nome-jogador col-sm">
+                    @if (Model?.EstatisticasJogador?.Lanes != null)
+                    {
+                        <h5>Posições</h5> <small>(Posição - Utilização)</small>
+                        foreach (var item in Model.EstatisticasJogador.Lanes.OrderByDescending(x => x.PercentualUtilizacao))
+                        {
+                            <div>@item.Descricao - @item.PercentualUtilizacao.ToString("P2")</div>
+                        }
+                    }
+                </div>
+
+                @if (Model.EstatisticasJogador.CampeoesXTaxaVitoria != null)
+                {
+                    <div class="nome-jogador col-sm">
+                        <h6>Campeões mais utilizados:</h6>
+                        <small>(Campeão - N° partidas - Taxa de vitória)</small>
+                        @foreach (var item in @Model.EstatisticasJogador.CampeoesXTaxaVitoria.OrderByDescending(x => x.PartidasTotais).Take(5))
+                        {
+                            <div>@item.Nome - @item.PartidasTotais - @item.TaxaVitoria.ToString("P2")</div>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="">
+        <div class="container quadro">
+            @if (Model != null && Model.Partidas != null && Model.Partidas.Count > 0)
+            {
+                @foreach (var partida in Model.Partidas)
+                {
+                    <div class="row linha">
+                        <div class="caixa-linha">
+                            <div class="col-12 col-xl-2 para-esquerda-xl container-icone-jogador">
+                                <img class="iconeJogador" src="@partida.UrlIconeCampeao" />
+                                <div class="caixa-situacao-partida-xl somente-xl">
+                                    @if (partida.Vitoria)
+                                    {
+                                        <h3 class="situacao-partida vitoria">Vitória</h3>
+                                    }
+                                    else
+                                    {
+                                        <h3 class="situacao-partida derrota">Derrota</h3>
+                                    }
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 caixa-situacao-partida">
+                                @if (partida.Vitoria)
+                                {
+                                    <h3 class="situacao-partida vitoria">Vitória</h3>
+                                }
+                                else
+                                {
+                                    <h3 class="situacao-partida derrota">Derrota</h3>
+                                }
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 para-esquerda">
+                                <p class="campeao-partida dados-partida">Campeão: @partida.NomeCampeao</p>
+                                <p class="data-partida dados-partida">Data: @partida.Data</p>
+                            </div>
+
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 para-esquerda">
+                                <p class="kda-partida dados-partida">KDA: @partida.KDA</p>
+                                <p class="lane-partida dados-partida">Lane: @partida.Lane</p>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-3 col-xl-2 para-esquerda">
+                                <p class="nivel-partida dados-partida">Nível: @partida.NivelMaximoAtingido</p>
+                                <p class="ouro-partida dados-partida">Ouro acumulado: @partida.OuroAcumulado</p>
+                            </div>
+
+                            <div class="col-12 col-xl-2 para-esquerda-xl">
+                                <div class="container-itens">
+                                    @for (int i = 0; i < partida.ItensFinais.Count; i++)
+                                    {
+                                        <div class="container-item">
+                                            <img class="item" src="@partida.ItensFinais[i].UrlIcone"
+                                                 title="@partida.ItensFinais[i].Nome" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="coluna-final">
+                                <div class="container-item container-ward">
+                                    <img class="item" src="@partida.Ward.UrlIcone" title="@partida.Ward.Nome" />
+                                </div>
+                                <button type="button" class="d-none d-xl-block botao-detalhes btn btn-dark btn-block"
+                                        onclick="carregarDetalhesPartida('@partida.GameId')">
+                                    Mais detalhes
+                                </button>
+                                <div class="col-12 d-xl-none caixa-botao-detalhes" style="float:right">
+                                    <button type="button" class="botao-detalhes btn btn-dark btn-block"
+                                            onclick="carregarDetalhesPartida('@partida.GameId')">
+                                        Mais detalhes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="detalhes-partida-@partida.GameId" class="row detalhes-partida" style="display:none;"></div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h3>Não foram encontradas partidas ranqueadas nesta temporada para este jogador.</h3>
+                <div class="bg-404">
+                </div>
+
+            }
+        </div>
+    </section>
+}
+<link href="~/css/estatisticasJogador.css" rel="stylesheet" />
+<script>
+    var BASE = '@Url.Action("Detalhes", "EstatisticasJogador")' + '/' + @ViewContext.RouteData.Values["regiao"];
+    var CONTAID = '@Model?.EstatisticasJogador.ContaId';
+</script>
+<script src="~/js/estatisticasJogador.js"></script>

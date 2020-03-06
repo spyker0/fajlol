@@ -1,0 +1,229 @@
+﻿.detalhes-superior > div, .detalhes-inferior > div {
+    padding: 0;
+}
+
+.container-detalhes {
+    font-size: 8pt;
+}
+
+.time {
+    padding: 0;
+}
+
+    .time > .row {
+        margin: 0;
+    }
+
+.detalhes-partida {
+    background-color: #e9eaec;
+    width: 100%;
+    margin: 0 1% 1% 1%;
+}
+
+@media screen and (min-width: 769px) {
+    .detalhes-superior > div, .detalhes-inferior > div {
+        height: 13px;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .time-aliado > div {
+        border-right: 1px solid;
+    }
+}
+
+.imagem-campeao-detalhes {
+    width: 100%;
+}
+
+.time .container-itens {
+}
+
+.time .container-item {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.time .item {
+    height: 20px;
+    width: 20px;
+}
+
+.alerta-jogador-desatualizado {
+    margin-top: 16px;
+}
+
+.dados-principais-jogador .col-12 {
+    padding: 0;
+}
+
+.foto {
+    width: 100%;
+}
+
+.nome-jogador {
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    /*margin-top: -90px;*/
+    text-align: left;
+    text-shadow: 3px 3px 3px #000;
+}
+    .nome-jogador small {
+        font-size:8px;
+    }
+
+    .divisao-jogador {
+        margin-bottom: 0;
+    }
+
+.iconeJogador {
+    display: block;
+    height: 120px;
+    margin: 0 auto;
+    width: 120px;
+}
+
+.caixa-linha {
+    background-color: #e9eaec;
+    border-radius: 3px;
+    box-shadow: 5px 5px 10px #000;
+    margin: 1%;
+    width: 98%;
+}
+
+.somente-xl {
+    display: none;
+}
+
+.situacao-partida {
+    font-size: 22px;
+    text-shadow: 1px 1px 1px #777;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.vitoria {
+    color: #33691E;
+}
+
+.derrota {
+    color: #E53935;
+}
+
+.dados-partida {
+    font-size: 18px;
+}
+
+.container-itens {
+    max-width: 100% !important;
+}
+
+.para-esquerda {
+    float: left;
+}
+
+.dados-principais-jogador {
+    background: linear-gradient(to top, #222, #414345);
+}
+
+@media screen and (max-width: 575px) {
+    .titulo-jogador {
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 0 0 0 10px !important;
+    }
+
+    .nome-jogador {
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .foto {
+        height: 140px;
+        width: 140px;
+    }
+
+    /*.nome-jogador {
+        background-color: transparent;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0;
+        text-align: left;
+    }*/
+}
+
+@media screen and (min-width: 992px) {
+    .iconeJogador {
+        height: 65px;
+        width: 65px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .caixa-linha {
+        padding-bottom: 35px;
+    }
+
+    .caixa-botao-detalhes {
+        position: relative;
+        top: 15px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .somente-xl {
+        display: flex;
+    }
+
+    .caixa-situacao-partida-xl {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .caixa-situacao-partida {
+        display: none;
+    }
+
+    .para-esquerda-xl {
+        float: left;
+    }
+
+    .dados-principais-jogador {
+        width: 1140px;
+    }
+
+    .caixa-botao-detalhes {
+        height: 40px;
+        margin-top: -40px;
+    }
+
+    .botao-detalhes {
+        height: 40px;
+    }
+
+    .coluna-final {
+        width: 14%;
+        float: left;
+    }
+
+    .container-ward {
+        float: left;
+        margin-bottom: 5.5px;
+    }
+
+    .container-icone-jogador {
+        padding: 5px;
+    }
+}
+
+.linha-campeao {
+    padding: 1px;
+}
+
+div.objetivos img {
+    width: 25px;
+}

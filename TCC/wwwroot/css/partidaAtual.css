@@ -1,0 +1,142 @@
+﻿.quadro {
+    background: #343a40;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 15px 1px 15px;
+    width: 100%;
+}
+
+.content-jogador,
+.content-itens {
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #000;
+    margin-bottom: 15px;
+    min-height: 75px;
+    width: 100%;
+}
+
+.content-jogador {
+    padding: 1%;
+}
+
+.content-itens {
+    padding: 5px;
+}
+
+.left {
+    float: left;
+}
+
+.dados {
+    margin: 7px 0 0 5px;
+}
+
+.right {
+    float: right;
+    width: 50%;
+}
+
+.container-dados-jogador {
+    background: #343a40;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.nome-jogador {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.regiao-jogador {
+    color: #fff;
+}
+
+
+
+.container-info {
+    margin-top: 40px;
+}
+
+.itens-sugeridos,
+.inimigo,
+.nome-inimigo,
+.titulo-aliados,
+.titulo-inimigos {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: white;
+}
+
+.quadro {
+    margin-top: 5px;
+}
+
+.inimigo {
+    margin-top: 40px;
+}
+
+.container-info .imagem {
+    display: block;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+}
+
+.nome-inimigo {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.info p {
+    line-height: 2em;
+}
+
+.content-jogador-foto {
+    display: block;
+    margin: 20px auto;
+}
+
+.content-jogador-campeao,
+.content-jogador-divisao,
+.chance-vitoria,
+.content-jogador-lane,
+.content-jogador-campeao-principal,
+.confiabilidade-periculosidade {
+    font-size: 15px;
+    line-height: 2em;
+}
+
+.content-jogador-nome {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    display: inherit;
+}
+
+@media screen and (min-width: 768px) {
+    .container-info .imagem {
+        margin-left: 0;
+    }
+
+    .nome-inimigo {
+        text-align: left !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .content-jogador-foto {
+        margin: 0;
+        height: 85px;
+    }
+
+    .content-jogador-nome {
+        display: inline;
+        text-align: left;
+    }
+
+    .content-itens {
+        height: 100px;
+    }
+}

@@ -1,0 +1,51 @@
+﻿body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Margem no topo do conteúdo por causa do header. */
+.body-content {
+    margin-top: 56px;
+}
+
+.linha {
+    background: linear-gradient(to top, #222, #414345);
+    border-radius: 5px;
+    box-shadow: 6px 6px 5px #d9d9d9;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container-icone-jogador {
+    padding: 10px;
+}
+
+.iconeJogador {
+    height: 85px;
+    width: 85px;
+}
+
+.container-itens {
+    max-width: 135px;
+    height: 100%;
+}
+.container-item {
+    padding: 5px 5px 0 0;
+    float: left;
+}
+
+.container-ward {
+    margin-bottom: 5px;
+}
+
+.item {
+    height: 40px;
+    width: 40px;
+}
+
+.bg-404 {
+    background-image: url('/images/404.svg');
+    height: 60vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

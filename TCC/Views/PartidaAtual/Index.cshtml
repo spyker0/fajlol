@@ -1,0 +1,151 @@
+﻿@model TCC.Models.PartidaAtualViewModel
+
+@{
+    ViewData["Title"] = $"Partida atual de {ViewContext.RouteData.Values["jogador"]} - {Model?.Platform}";
+}
+@if (Model == null)
+{
+    <section class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alerta-jogador-desatualizado">
+                    <strong>Atenção!</strong> Não foi possível encontrar partida em andamento para este jogador!
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+@if (Model != null)
+{
+
+
+    <section class="container-fluid container-aliados-inimigos container">
+        <article class="row">
+            <div class="col-xl-3">
+                <div class="quadro">
+                    <h5 class="itens-sugeridos">Itens sugeridos:</h5>
+                    <div class="content-itens">
+                        <div style="width:135px">
+                            @for (int i = 0; i < Model.ItensSugeridos.Count; i++)
+                            {
+                                <div class="container-item">
+                                    <img class="item" src="@Model.ItensSugeridos[i].UrlIcone" title="@Model.ItensSugeridos[i].Nome">
+                                </div>
+                            }
+                        </div>
+                        @if (Model.WardSugerida != null)
+                        {
+                            <div class="container-item container-ward">
+                                <img class="item" src="@Model.WardSugerida.UrlIcone" title="@Model.WardSugerida.Nome" />
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+            @if (Model.Dicas != null && Model.Dicas.Count > 0)
+            {
+                <div class="col-xl-9">
+                    <div class="quadro">
+                        <h5 class="itens-sugeridos">Dicas:</h5>
+                        <div class="content-jogador" style="padding:0px">
+                            <ul>
+                                @foreach (var item in Model.Dicas)
+                                {
+                                    <li>@item.Mensagem</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </article>
+
+
+
+    </section>
+
+    <section class="container-fluid container-aliados-inimigos container">
+        <article class="row">
+            <div class="col-12 col-md-6">
+                <div class="quadro">
+                    <h5 class="titulo-aliados">Aliados - Chance de vencer - @Model.ChanceVitoriaAliados.ToString("P2")</h5>
+
+                    @foreach (var item in Model.Aliados)
+                    {
+                        <div class="content-jogador">
+                            <div class="row">
+                                <div class="col-12 col-xl-2">
+                                    <img class="content-jogador-foto" src="@item.IconeCampeao">
+                                </div>
+                                <div class="col-12 col-xl-5">
+                                    <span class="content-jogador-nome">@item.Nome</span>
+                                    <br>
+                                    <span class="content-jogador-campeao">Campeão: @item.Campeao</span>
+                                    <br>
+                                    <span class="content-jogador-divisao">Divisão: @item.Divisao</span>
+                                </div>
+                                <div class="col-12 col-xl-5">
+                                    @if (item.JogadorPrincipal)
+                                    {
+                                        <span class="confiabilidade-periculosidade">
+                                            Você!
+                                        </span>
+                                        <br>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="confiabilidade-periculosidade">
+                                            @item.ConfiabilidadePericulosidade
+                                        </span>
+                                        <br>
+                                    }
+                                    <span class="content-jogador-lane">Lane principal: @item.LanePrincipal</span>
+                                    <br>
+                                    <span class="content-jogador-campeao-principal">Campeão principal: @item.CampeaoPrincipal</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="quadro">
+                    <h5 class="titulo-inimigos">Inimigos - Chance de vencer - @Model.ChanceVitoriaInimigos.ToString("P2")</h5>
+
+                    @foreach (var item in Model.Inimigos)
+                    {
+                        <div class="content-jogador">
+                            <div class="row">
+                                <div class="col-12 col-xl-2">
+                                    <img class="content-jogador-foto" src="@item.IconeCampeao">
+                                </div>
+                                <div class="col-12 col-xl-5">
+                                    <span class="content-jogador-nome">@item.Nome</span>
+                                    <br>
+                                    <span class="content-jogador-campeao">Campeão: @item.Campeao</span>
+                                    <br>
+                                    <span class="content-jogador-divisao">Divisão: @item.Divisao</span>
+                                </div>
+                                <div class="col-12 col-xl-5">
+                                    <span class="confiabilidade-periculosidade">
+                                        @item.ConfiabilidadePericulosidade
+                                    </span>
+                                    <br>
+                                    <span class="content-jogador-lane">Lane principal: @item.LanePrincipal</span>
+                                    <br>
+                                    <span class="content-jogador-campeao-principal">Campeão principal: @item.CampeaoPrincipal</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </article>
+    </section>
+}
+<link href="~/css/partidaAtual.css" rel="stylesheet" />
