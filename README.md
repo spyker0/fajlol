@@ -19,3 +19,18 @@ Também é necessário apontar o projeto para alguma instância do MongoDB no ap
 ```Json
 "ConnectionString": "mongodb://localhost:27017",
 ```
+
+Após isso, basta fazer o download do [Visual Studio 2019](https://visualstudio.microsoft.com/pt-br/vs/) e executar o projeto.
+
+Caso deseje executar pelo dotnet cli você deve ir na pasta TCC e restaurar os pacotes de front-end primeiro executando
+```shell
+yarn install #ou npm install
+```
+e depois
+```shell
+gulp
+```
+Após isso basta executar o projeto com
+```shell
+dotnet run
+```
