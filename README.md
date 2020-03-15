@@ -1,6 +1,11 @@
 # Fajlol
 ## Ferramenta de auxílio a jogadores de League of Legends
 
+Requisitos para rodar o projeto:
+1. Ter instalado o [Sdk 2.1 do dotnet core](https://dotnet.microsoft.com/download/dotnet-core/2.1)
+2. Uma instância do [MongoDB](https://www.mongodb.com/)
+3. [Visual Studio 2019](https://visualstudio.microsoft.com/pt-br/vs/) ou [Node.js](https://nodejs.org/en/)
+
 Este projeto é o meu trabalho de conclusão do curso [Tecnologia em Análise e Desenvolvimento de Sistemas do Instituto Federal Catarinense - Campus Blumenau](http://blumenau.ifc.edu.br/tads/).  
 A ferramenta tem por objetivo auxiliar o jogador durante a partida para que ele tenha melhores resultados, com foco principalmente nos jogadores iniciantes.  
 Para tal foi desenvolvido este projeto Web utilizando ASP.NET Core, Jquery e MongoDB.  
@@ -18,4 +23,19 @@ A chave acima é fictícia, para obtê-la é necessário criar uma conta no [por
 Também é necessário apontar o projeto para alguma instância do MongoDB no appsettings.json. Atualmente está apontando para localhost na porta padrão em que o MongoDB fica instalado:
 ```Json
 "ConnectionString": "mongodb://localhost:27017",
+```
+
+Após isso, basta fazer o download do [Visual Studio 2019](https://visualstudio.microsoft.com/pt-br/vs/) e executar o projeto.
+
+Caso deseje executar pelo dotnet cli você deve ir na pasta TCC e restaurar os pacotes de front-end primeiro executando
+```shell
+yarn install #ou npm install
+```
+e depois
+```shell
+gulp
+```
+Após isso basta executar o projeto com
+```shell
+dotnet run
 ```
