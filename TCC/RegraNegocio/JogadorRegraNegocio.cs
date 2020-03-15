@@ -222,7 +222,7 @@ namespace TCC.RegraNegocio
             return retorno;
         }
 
-        public async Task SincronizaUltimasPartidasJogador(Region regiao, string accountId, DateTime? dataUltimaAtualizacao = null, int quantidadePartidas = 4, List<int> championIds = null)
+        public async Task SincronizaUltimasPartidasJogador(Region regiao, string accountId, DateTime? dataUltimaAtualizacao = null, int quantidadePartidas = 2, List<int> championIds = null)
         {
             if (championIds != null && championIds.Count > 0)
                 dataUltimaAtualizacao = null;
